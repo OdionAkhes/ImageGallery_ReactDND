@@ -10,7 +10,9 @@ import { auth, logout } from "./firebaseConfig.js";
 import { onAuthStateChanged } from "firebase/auth";
 const App = () => {
   const [user, setUser] = useState(null);
-const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
+  
+  
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);

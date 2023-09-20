@@ -18,8 +18,8 @@ const Card = ({ src, title, id, index, moveImage,tag, }) => {
         return;
       }
       const hoverBoundingRect = ref.current?.getBoundingClientRect();
-      const hoverMiddleY =
-        (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
+  const hoverMiddleY = hoverBoundingRect.height * 0.5; 
+
 
       const clientOffset = monitor.getClientOffset();
       const hoverClientY = clientOffset.y - hoverBoundingRect.top;
@@ -55,7 +55,7 @@ const Card = ({ src, title, id, index, moveImage,tag, }) => {
     <div
       className={`bg-white shadow-md hover:shadow-xl transition-shadow duration-300 relative rounded-md ${
         isDragging ? "shadow-lg" : ""
-      }`}
+      } transition-all duration-300 ease-in-out`}
       style={{ opacity }}
       ref={ref}
     >

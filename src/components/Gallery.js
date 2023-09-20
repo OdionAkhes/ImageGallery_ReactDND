@@ -57,7 +57,7 @@ const Gallery = () => {
          />
        </svg>
      </div>
-     <main className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 cursor-pointer p-6">
+     <main className="grid gap-8 grid-cols-1 md:grid-cols-3 lg:grid-cols-4 cursor-pointer p-6">
        {loading
          ? Array.from({ length: 9 }).map((_, index) => (
              <Skeleton key={index} height="250px" rounded="lg" />
@@ -65,7 +65,7 @@ const Gallery = () => {
          : filteredImages.map((image, index) => (
              <Card
                src={image.img}
-               key={index}
+               key={image.id}
                {...image}
                index={index}
                moveImage={moveImage}
