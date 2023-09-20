@@ -1,6 +1,8 @@
 /** @format */
 
 import React, { useEffect, useState } from "react";
+import { TailSpin as Loader } from "react-loader-spinner";
+
 
 import Gallery from "./components/Gallery.js";
 import Login from "./components/Login.js";
@@ -8,10 +10,11 @@ import { auth, logout } from "./firebaseConfig.js";
 import { onAuthStateChanged } from "firebase/auth";
 const App = () => {
   const [user, setUser] = useState(null);
-
+const [loading, setLoading] = useState(true);
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+       setLoading(false);
     });
 
     return () => unsubscribe();
@@ -23,6 +26,18 @@ const App = () => {
       console.error("Error signing out:", error);
     }
   };
+  if (loading)
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <Loader
+          type="TailSpin"
+          color="#00BFFF"
+          height={100}
+          width={100}
+          timeout={3000} //3 secs
+        />
+      </div>
+    );
   if (!user) return <Login />;
 
   return (

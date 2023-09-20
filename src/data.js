@@ -55,4 +55,22 @@ export const galleryList = [
     tag: "Ball",
     title: "Image 9",
   },
+  {
+    id: 10,
+    img: "https://res.cloudinary.com/demgu5tmv/video/upload/v1695233256/samples/sea-turtle.mp4",
+    tag: "Turtle",
+    title: "Image 10",
+  },
+  {
+    id: 11,
+    img: "https://res.cloudinary.com/demgu5tmv/image/upload/v1695233251/samples/food/spices.jpg",
+    tag: "Spices",
+    title: "Image 11",
+  },
+  {
+    id: 12,
+    img: "https://res.cloudinary.com/demgu5tmv/image/upload/v1695233247/samples/landscapes/architecture-signs.jpg",
+    tag: "Street",
+    title: "Image 12",
+  },
 ];
