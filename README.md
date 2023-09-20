@@ -1,6 +1,6 @@
 # Image Gallery - React + Firebase Authentication + Drag and Drop
 
-![Image Gallery Screenshot](./src/Screenshot%202023-09-20%20at%208.34.41%20PM.png)
+![Image Gallery Screenshot](./src/Screenshot%202023-09-20%20at%209.13.03%20PM.png)
 A responsive image gallery built with React, showcasing drag-and-drop functionality.
 
 ## Features:
