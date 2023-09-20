@@ -57,8 +57,8 @@ export const galleryList = [
   },
   {
     id: 10,
-    img: "https://res.cloudinary.com/demgu5tmv/video/upload/v1695233256/samples/sea-turtle.mp4",
-    tag: "Turtle",
+    img: "https://res.cloudinary.com/demgu5tmv/image/upload/v1695233272/samples/cup-on-a-table.jpg",
+    tag: "Desk",
     title: "Image 10",
   },
   {

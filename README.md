@@ -1,3 +1,78 @@
+# Image Gallery - React + Firebase Authentication + Drag and Drop
+
+![Image Gallery Screenshot](./src/Screenshot%202023-09-20%20at%208.34.41%20PM.png)
+A responsive image gallery built with React, showcasing drag-and-drop functionality.
+
+## Features:
+
+- Simple email and password authentication with firebase.
+- Loading state with spinner.
+- Grid layout for image display.
+- Search functionality to filter images based on tags.
+- Drag-and-drop functionality for rearranging images.
+- Responsive design for mobile, tablet, and desktop views.
+
+## Live Demo:
+
+Visit the live site [Image Gallery Demo](https://image-gallery-react-dnd.vercel.app/)
+
+## Local Setup:
+## Getting Started
+
+### Prerequisites
+
+- You must have Node.js and npm installed. You can download them [here](https://nodejs.org/).
+- Set up a Firebase project and enable Email & Password authentication. For dummy purposes, a user with credentials `user@example.com` and `1Password` should be set up.
+
+### Installation
+
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/OdionAkhes/ImageGallery_ReactDND.git
+    ```
+
+2. Change into the directory:
+    ```bash
+    cd image-gallery
+    ```
+
+3. Install the dependencies:
+    ```bash
+    npm install
+    ```
+
+4. Create a `.env` file in the root directory and add your Firebase config:
+    ```plaintext
+    REACT_APP_FIREBASE_API_KEY=Your_Api_Key
+    REACT_APP_FIREBASE_AUTH_DOMAIN=Your_Auth_Domain
+    REACT_APP_FIREBASE_PROJECT_ID=Your_Project_Id
+    REACT_APP_FIREBASE_STORAGE_BUCKET=Your_Storage_Bucket
+    REACT_APP_FIREBASE_MESSAGING_SENDER_ID=Your_Messaging_Sender_Id
+    REACT_APP_FIREBASE_APP_ID=Your_App_Id
+    REACT_APP_FIREBASE_MEASUREMENT_ID=Your_Measurement_Id
+    ```
+
+5. Run the development server:
+    ```bash
+    npm start
+    ```
+
+6. Visit `http://localhost:3000` in your browser.
+
+
+## Usage
+
+1. **Login** using the dummy user: 
+    - Email: `user@example.com`
+    - Password: `1Password`
+2. Once logged in, you'll be presented with the image gallery.
+3. **Drag & Drop** any image to reorder them as you please.
+4. Use the **Search Bar** to filter images based on tags.
+5. To **Sign Out**, click on the "Sign Out" button.
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -12,59 +87,4 @@ Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+You may also see any lint errors in the 
