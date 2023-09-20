@@ -1,88 +1,41 @@
 /** @format */
 
-import React,{useRef, useState} from "react";
-import {galleryList} from "./data.js";
+import React,{useEffect, useState} from "react";
 
-import { useDrag, useDrop } from "react-dnd";
-
-const Card = ({ src, title, id, index,moveImage }) => {
-  const ref = useRef(null);
-  const [, drop] = useDrop({
-    accept: "image",
-    hover: (item, monitor) => {
-      if (!ref.current) {
-        return;
-      }
-      const dragIndex = item.index;
-      const hoverIndex = index;
-
-      if (dragIndex === hoverIndex) {
-        return;
-      }
-      const hoverBoundingRect = ref.current?.getBoundingClientRect();
-      const hoverMiddleY =
-        (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
-
-      const clientOffset = monitor.getClientOffset();
-      const hoverClientY = clientOffset.y - hoverBoundingRect.top;
-
-      if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
-        return;
-      }
-
-      if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
-        return;
-      }
-
-      moveImage(dragIndex, hoverIndex);
-
-      item.index = hoverIndex;
-    },
-  });
-    const [{ isDragging }, drag] = useDrag({
-      type: "image",
-      item: () => {
-        return { id, index };
-      },
-      collect: (monitor) => {
-        return {
-          isDragging: monitor.isDragging(),
-        };
-      },
-    });
-  const opacity = isDragging ? 0 : 1;
-  drag(drop(ref));
-
-  return (
-    <div className="card" style={{ opacity }} ref={ref}>
-      <img src={src} alt={title} />
-    </div>
-  );
-};
+import Gallery from "./components/Gallery.js";
+import Login from "./components/Login.js";
+import { auth,logout } from "./firebaseConfig.js";
+import { onAuthStateChanged } from "firebase/auth";
 const App = () => {
-  const [images, setImages] = useState(galleryList);
-const moveImage = React.useCallback((dragIndex, hoverIndex) => {
-  setImages((prevCards) => {
-    const clonedCards = [...prevCards];
-    const removedItem = clonedCards.splice(dragIndex, 1)[0];
-    clonedCards.splice(hoverIndex, 0, removedItem);
-    return clonedCards;
-  });
-}, []);
+  const [user, setUser] = useState(null);
+  
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+
+    return () => unsubscribe();
+  }, []);
+  const handleLogout = async () => {
+    try {
+      await logout();
+    } catch (error) {
+      console.error("Error signing out:", error);
+    }
+  };
+  if (!user) return <Login />;
+  
 
   return (
-    <main>
-      {images.map((image, index) => (
-        <Card
-          src={image.img}
-          key={index}
-          title={image.title}
-          id={image.id}
-          index={index}
-          moveImage={moveImage}
-        />
-      ))}
-    </main>
+    <>
+      <button
+        onClick={handleLogout}
+        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-200"
+      >
+        Sign Out
+      </button>
+      <Gallery />
+    </>
   );
 };
 export default App;
