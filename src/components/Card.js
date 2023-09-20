@@ -59,7 +59,8 @@ const Card = ({ src, title, id, index, moveImage,tag, }) => {
       style={{ opacity }}
       ref={ref}
     >
-      <img src={src} alt={title} className="object-cover h-64 w-full" />
+      <img src={src} alt={title} className="object-cover h-64 w-full rounded" />
+
       <span className="absolute top-2 right-2  text-gray-300 p-1 rounded z-10">
         {tag}
       </span>

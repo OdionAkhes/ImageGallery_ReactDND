@@ -2,12 +2,16 @@
 
 // Login.js
 
-import React from "react";
+import React,{useState} from "react";
 import { useForm } from "react-hook-form";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import { toast } from "react-toastify";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 function Login() {
+
+  const [showPassword, setShowPassword] = useState(false);
   const {
     register,
     handleSubmit,
@@ -47,9 +51,9 @@ function Login() {
     }
   };
 
-  return (
+return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
+      <div className="max-w-md w-full space-y-8 bg-white p-6 rounded-lg shadow-md">
         <h1 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
           Login
         </h1>
@@ -67,14 +71,20 @@ function Login() {
                 <p className="text-red-500 text-xs">{errors.email.message}</p>
               )}
             </div>
-            <div>
+            <div className="relative">
               <label className="sr-only">Password</label>
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 {...register("password", { required: "Password is required" })}
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Password"
               />
+              <div 
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-3 cursor-pointer"
+              >
+                <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+              </div>
               {errors.password && (
                 <p className="text-red-500 text-xs">
                   {errors.password.message}
@@ -97,3 +107,5 @@ function Login() {
 }
 
 export default Login;
+
+
