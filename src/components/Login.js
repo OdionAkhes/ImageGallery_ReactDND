@@ -71,7 +71,7 @@ return (
                 <p className="text-red-500 text-xs">{errors.email.message}</p>
               )}
             </div>
-            <div className="relative">
+          <div className="relative">
               <label className="sr-only">Password</label>
               <input
                 type={showPassword ? "text" : "password"}
@@ -81,7 +81,7 @@ return (
               />
               <div 
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-3 cursor-pointer"
+                className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
               >
                 <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
               </div>
@@ -92,6 +92,7 @@ return (
               )}
             </div>
           </div>
+         
           <div>
             <button
               type="submit"

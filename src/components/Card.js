@@ -53,15 +53,19 @@ const Card = ({ src, title, id, index, moveImage,tag, }) => {
 
   return (
     <div
-      className={`bg-gray-100 shadow-md relative rounded-md ${
+      className={`bg-white shadow-md hover:shadow-xl transition-shadow duration-300 relative rounded-md ${
         isDragging ? "shadow-lg" : ""
       }`}
       style={{ opacity }}
       ref={ref}
     >
-      <img src={src} alt={title} className="object-cover h-64 w-full rounded" />
+      <img
+        src={src}
+        alt={title}
+        className="object-cover h-64 w-full rounded-t-md"
+      />
 
-      <span className="absolute top-2 right-2  text-gray-300 p-1 rounded z-10">
+      <span className="absolute top-2 right-2 bg-black bg-opacity-50 text-white px-2 py-1 rounded z-10">
         {tag}
       </span>
 
