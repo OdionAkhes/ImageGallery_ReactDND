@@ -6,7 +6,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebaseConfig";
-
+import { toast } from "react-toastify";
 function Login() {
   const {
     register,
@@ -14,11 +14,36 @@ function Login() {
     formState: { errors },
   } = useForm();
 
+ 
   const onSubmit = async (data) => {
+
+    const toastId = toast.info("Signing in...", {
+      position: "bottom-center",
+      autoClose: 1000,
+      hideProgressBar: true,
+    });
+
     try {
       await signInWithEmailAndPassword(auth, data.email, data.password);
+
+
+      toast.dismiss(toastId);
+
+      toast.success("Successfully signed in!", {
+        position: "bottom-center",
+        autoClose: 1000,
+      });
     } catch (error) {
       console.error("Error signing in:", error);
+
+
+      toast.dismiss(toastId);
+
+
+      toast.error(`Error signing in: ${error.message}`, {
+        position: "bottom-center",
+        autoClose: 1000,
+      });
     }
   };
 

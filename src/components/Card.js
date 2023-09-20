@@ -1,4 +1,4 @@
-/** @format */
+
 import React, { useRef} from "react";
 
 
@@ -48,19 +48,21 @@ const Card = ({ src, title, id, index, moveImage,tag, }) => {
       };
     },
   });
-  const opacity = isDragging ? 0 : 1;
+  const opacity = isDragging ? 0.5 : 1;
   drag(drop(ref));
 
   return (
     <div
-      className="bg-gray-100 shadow-md relative rounded-md"
+      className={`bg-gray-100 shadow-md relative rounded-md ${
+        isDragging ? "shadow-lg" : ""
+      }`}
       style={{ opacity }}
       ref={ref}
     >
       <img src={src} alt={title} className="object-cover h-64 w-full" />
-     <span className="absolute top-2 right-2  text-gray-300 p-1 rounded z-10">
-    {tag}
-</span>
+      <span className="absolute top-2 right-2  text-gray-300 p-1 rounded z-10">
+        {tag}
+      </span>
 
       <div className="select-none p-4">
         <h2 className="font-bold text-xl font-serif">{title}</h2>

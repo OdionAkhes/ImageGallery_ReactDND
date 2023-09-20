@@ -1,15 +1,24 @@
-/** @format */
 
-import React, { useState } from "react";
+
+import React, { useState, useEffect } from "react";
 import { galleryList } from "../data";
-
+import { Skeleton } from "@chakra-ui/react";
 import Card from "./Card"; 
 
 
 const Gallery = () => {
+    const [loading, setLoading] = useState(true);
     const [images, setImages] = useState(galleryList);
     const [searchTerm, setSearchTerm] = useState("");
 
+      useEffect(() => {
+
+        setTimeout(() => {
+          setImages(galleryList);
+          setLoading(false);
+        }, 2000);
+      }, []);
+  
     const filteredImages = images.filter(image => {
        return (image.tag.toLowerCase().includes(searchTerm.toLowerCase())
        )
@@ -49,15 +58,19 @@ const Gallery = () => {
        </svg>
      </div>
      <main className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 cursor-pointer p-6">
-       {filteredImages.map((image, index) => (
-         <Card
-           src={image.img}
-           key={index}
-           {...image}
-           index={index}
-           moveImage={moveImage}
-         />
-       ))}
+       {loading
+         ? Array.from({ length: 9 }).map((_, index) => (
+             <Skeleton key={index} height="250px" rounded="lg" />
+           ))
+         : filteredImages.map((image, index) => (
+             <Card
+               src={image.img}
+               key={index}
+               {...image}
+               index={index}
+               moveImage={moveImage}
+             />
+           ))}
      </main>
    </div>
  );
